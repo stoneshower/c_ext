@@ -1,25 +1,30 @@
-// // {
-// //   "name": "Reload and Kill JS - Using a content script",
-// //   "version": "1.0",
-// //   "permissions": [
-// //     "tabs", "<all_urls>" , "storage"
-// //   ],
-// //   "background": {
-// //     "scripts": ["background.js"]
-// //   },
-// //    "content_scripts": [
-// //     {
-// //       "matches": ["<all_urls>"],
-// //       "js": ["injectedCode.js"],
-// //       "run_at" : "document_start"
-// //     }
-// //   ],
-// //   "minimum_chrome_version" : "20",
-// //   "manifest_version" : 2
-// // }
-// {
+{
+	"manifest_version": 2,
+    "name": "load html source",
+    "description": "This is a short description for our Chrome Extension",
+    "version": "1.0",
 
-
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "Hello!"
+	},
+    "permissions": [
+        "tabs", "<all_urls>", "storage"
+    ],
+    "icons": {
+        "64": "icon.png"
+    },
+    // "background": {
+    //   "scripts": ["background.js"]
+    // },
+    "content_scripts": [{
+    	// "matches": ["http://*/*", "https://*/*"],
+        "matches": ["<all_urls>"],
+        "css": ["style.css"],
+        "js": ["jquery.js", "myscript.js"],
+        "run_at": "document_start"
+    }]
+}
 
 
 
@@ -49,41 +54,40 @@
 
 
 
-{
-	"manifest_version": 2,
+// {
+// 	"manifest_version": 2,
 
-	"name": "My Extension",
-	"description": "This is a short description for our Chrome Extension",
-	"version": "1.0",
+// 	"name": "My Extension",
+// 	"description": "This is a short description for our Chrome Extension",
+// 	"version": "1.0",
 
-	"browser_action": {
-		"default_icon": "icon.png",
-		"default_popup": "mypopup.html"
-	},
-	"icons": {
-		"64": "icon.png"
-	},
-	"permissions": [
-		"activeTab",
-		"storage",
-		"https://ajax.googleapis.com/"
-	],
-	// "background": {
-	// 	"scripts": ["background.js"]
-	// },
-	"content_scripts": [
-		{
-			"matches": ["http://*/*", "https://*/*"],
-			"css": ["style.css"],
-			"js": ["jquery.js", "myscript.js"],
-			"run_at": "document_end"
-		}
-	],
-	"web_accessible_resources": [
-		"toolbar.html",
-		"style.css"
-	]
-}
+// 	"browser_action": {
+// 		"default_icon": "icon.png",
+// 		"default_title": "Hello!"
+// 	},
+// 	"icons": {
+// 		"64": "icon.png"
+// 	},
+// 	"permissions": [
+// 		"tabs",
+// 		"<all_urls>"
+// 	],
+// 	"background": {
+// 		"scripts": ["background.js"]
+// 	}
+	// "content_scripts": [
+	// 	{
+	// 		"matches": ["http://*/*", "https://*/*"],
+	// 		"css": ["style.css"],
+	// 		"js": ["jquery.js", "myscript.js"],
+	// 		"run_at": "document_idle"
+	// 	}
+	// ],
+	// "web_accessible_resources": [
+	// 	"toolbar.html",
+	// 	"style.css"
+	// ]
+// }
 
 
 // https://www.youtube.com/watch?v=bzXg7r-1IaY&list=PLYxzS__5yYQlWil-vQ-y7NR902ovyq1Xi&index=6
