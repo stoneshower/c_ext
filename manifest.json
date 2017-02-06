@@ -1,54 +1,3 @@
-// // {
-// //   "name": "Reload and Kill JS - Using a content script",
-// //   "version": "1.0",
-// //   "permissions": [
-// //     "tabs", "<all_urls>" , "storage"
-// //   ],
-// //   "background": {
-// //     "scripts": ["background.js"]
-// //   },
-// //    "content_scripts": [
-// //     {
-// //       "matches": ["<all_urls>"],
-// //       "js": ["injectedCode.js"],
-// //       "run_at" : "document_start"
-// //     }
-// //   ],
-// //   "minimum_chrome_version" : "20",
-// //   "manifest_version" : 2
-// // }
-// {
-
-
-
-
-
-// {
-//   "name": "Injecta",
-//   "version": "0.0.1",
-//   "manifest_version": 2,
-//   "description": "Injecting stuff",
-//   "homepage_url": "http://danharper.me",
-//   "background": {
-//     "scripts": [
-//       "background.js"
-//     ],
-//     "persistent": true
-//   },
-//   "browser_action": {
-//     "default_title": "Inject!"
-//   },
-//   "permissions": [
-//     "https://*/*",
-//     "http://*/*",
-//     "tabs"
-//   ]
-// }
-
-
-
-
-
 {
 	"manifest_version": 2,
 
@@ -59,7 +8,6 @@
 	"browser_action": {
 		"default_icon": "off.png",
 		"default_title": "Rasta Check"
-		// "default_popup": "mypopup.html"
 	},
 	"icons": {
 		"64": "off.png"
@@ -79,7 +27,7 @@
 		{
 			"matches": ["http://*/*", "https://*/*"],
 			"css": ["style.css"],
-			"js": ["jquery.js"],
+			"js": ["jquery.js", "myscript.js"],
 			"run_at": "document_end"
 		}
 	],
@@ -88,7 +36,6 @@
 		"style.css"
 	]
 }
-
 
 // https://www.youtube.com/watch?v=bzXg7r-1IaY&list=PLYxzS__5yYQlWil-vQ-y7NR902ovyq1Xi&index=6
 // history, bookmark manager, newtab
