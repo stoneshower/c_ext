@@ -1,11 +1,43 @@
-chrome.storage.sync.get("showRasta", function (obj) {
-    console.log(obj.showRasta.on);
-    if(obj.showRasta.on == 'true'){
+// alert('content_script is loaded!');
+
+// if( extension_status == 'on' ) {
+
+
+ // alert('content_script is loaded - on!!');
+
+// chrome.storage.local.get(window.entity, function(items) {
+//     console.log(items.hoge.test);
+// });
+
+
+
+
+    /*using storage*/
+    // chrome.runtime.sendMessage({method: "getLocalStorage", key: "status"}, function(response) {
+        // console.log(response.data);
+    // });
+
+    // console.log(sessionStorage['showResult']);
+
+    // if( sessionStorage['showResult'] === 'on' ){
+    /*/using storage*/
+
+
+    /*trying to modify(set) manifest json*/
+    // var manifest = chrome.runtime.getManifest();
+    // manifest.content_scripts[0].js = [""];
+    // manifest.content_scripts[0].js = ["jquery.js", "dummy.js"];
+    // chrome.runtime.sendMessage({method: "getLocalStorage", key: "status"}, function(response) {
+    //     console.log(response.data);
+    // });
+    /*/trying to modify(set) manifest json*/
 
         (function($) {
             /***
              * Validation for JSON Rasta: Checking the number of the data and template elements
              **/
+
+            // alert('start');
 
             // Get the DOM element which wraps Rasta element
             var $radTable = $('.rad-table-existItemDisplay');
@@ -38,6 +70,9 @@ chrome.storage.sync.get("showRasta", function (obj) {
                 // });
                 $selfText = [...new Set($selfText)];
 
+
+                // console.log($selfText);
+
                 // Set default number to count as zero
                 var rastaTempImageNum = 0;
                 var rastaTempTextNum = 0;
@@ -61,6 +96,14 @@ chrome.storage.sync.get("showRasta", function (obj) {
                 var rastaTextConfigNum = parseInt( $rastaConfig.attr('textnum') );
                 var rastaShopConfigNum = parseInt( $rastaConfig.attr('shopnum') );
                 var rastaIconConfigNum = parseInt( $rastaConfig.attr('iconnum') );
+
+
+
+            // console.log('image: ' + rastaTempImageNum + ' : ' + rastaImageConfigNum);
+            // console.log('text: ' + rastaTempTextNum + ' : ' + rastaTextConfigNum);
+            // console.log('shop: ' + rastaTempShopNum + ' : ' + rastaShopConfigNum);
+            // console.log('iconnum: ' + rastaTempIconNum + ' : ' + rastaIconConfigNum);
+
 
                 // Compare the number of the data and template elements
                 if(rastaTempImageNum === rastaImageConfigNum){
@@ -100,6 +143,23 @@ chrome.storage.sync.get("showRasta", function (obj) {
                 $radTable.show();
             });
 
+            // alert('end');
+
         })(jQuery);
-    }
-});
+// }
+        /*using storage*/
+        //   } else{
+        //     console.log(response.data);
+        //   }
+
+        // });
+        /*using storage*/
+
+
+
+
+
+
+
+
+// }
