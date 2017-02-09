@@ -4,11 +4,13 @@ var clicked = false;
 
 chrome.tabs.onUpdated.addListener(function(){
 	if(clicked === false){
-		chrome.browserAction.setIcon({path: "off.png"});
-		chrome.browserAction.setBadgeText({text: 'OFF'});
+		chrome.browserAction.setIcon({path: "on.png"});
+		chrome.browserAction.setBadgeText({text: 'ON'});
+		chrome.browserAction.setBadgeBackgroundColor({color:"#bf0000"});
 		chrome.storage.sync.set(
 	    	{
-	    		'showRasta':{ on:'false' }
+	    		'showRasta':{ on:'true' }
+	    		// 'showRasta':{ on:'false' }
 	    	}
 	    )
 	}
@@ -22,6 +24,7 @@ chrome.browserAction.onClicked.addListener(
 		if(fire === true){
 			chrome.browserAction.setIcon({path: "on.png"});
 			chrome.browserAction.setBadgeText({text: 'ON'});
+			chrome.browserAction.setBadgeBackgroundColor({color:"#bf0000"});
 			chrome.storage.sync.set(
 		    	{
 		    		'showRasta':{ on:'true' }
@@ -31,6 +34,7 @@ chrome.browserAction.onClicked.addListener(
 		} else {
 			chrome.browserAction.setIcon({path: "off.png"});
 			chrome.browserAction.setBadgeText({text: 'OFF'});
+			chrome.browserAction.setBadgeBackgroundColor({color:"#70a300"});
 			chrome.storage.sync.set(
 		    	{
 		    		'showRasta':{ on:'false' }

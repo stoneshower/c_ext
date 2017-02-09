@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "My Extension",
-	"description": "This is a short description for our Chrome Extension",
+	"name": "Rasta Check",
+	"description": "This is for checking the number of the template variables and the data on JSON",
 	"version": "1.0",
 
 	"browser_action": {
@@ -35,6 +35,3 @@
 		"style.css"
 	]
 }
-
-// https://www.youtube.com/watch?v=bzXg7r-1IaY&list=PLYxzS__5yYQlWil-vQ-y7NR902ovyq1Xi&index=6
-// history, bookmark manager, newtab

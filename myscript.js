@@ -29,7 +29,7 @@ chrome.storage.sync.get("showRasta", function (obj) {
                 var $selfText = $selfText.replace(/\s/g, '');
 
                 // Get the array of the texts which match "ALPHABET" + "NUMBER" + "ALPHABET" + "NUMBER" or "ALPHABET + NUMBER";
-                $selfText = $selfText.match(/#?[(A-Z)]+[(0-9)]+[(A-Z)]+[(0-9)]#?|#?[(A-Z)]+[(0-9)]#?/g);
+                $selfText = $selfText.match(/#?[(A-Z)]+[(0-9)]+[(A-Z)]+[(0-9)]+#?|#?[(A-Z)]+[(0-9)]+#?/g);
 
 
                 // Remove the duplicated array
@@ -88,17 +88,49 @@ chrome.storage.sync.get("showRasta", function (obj) {
                 }
 
                 // Output the result on DOM
-                $( '<style>.rastaNote { border: 1px solid #4E4E4E;padding: 5px;box-sizing: border-box; }.rastaNoteError{ color:red;font-weight:bold; }</style>' ).appendTo( 'head' );
-                $(this).prepend('<div class="rastaNote" />');
-                    $(this).find('.rastaNote').prepend(
-                        rastaImageNote +
-                        rastaTextNote +
-                        rastaShopNote +
-                        rastaIconNote
-                    );
-                // Show $('.rad-table-existItemDisplay');
-                $radTable.show();
+                var rastaUrl = $rastaConfig.attr('url');
+                console.log(rastaUrl);
+
+
+                var $self = $(this);
+
+                // Get the DOM element of the template
+                var $radTableFrame = $self.find('.rad-table-frame');
+
+                $.ajax({
+                  url: rastaUrl,
+                  cache: false,
+                  data: "",
+                  dataType: "json",
+                  success: function(data){
+                    if( data.adList.length !== 0) {
+                        $self.prepend('<div class="rastaNote" />');
+                            $self.find('.rastaNote').prepend(
+                                rastaImageNote +
+                                rastaTextNote +
+                                rastaShopNote +
+                                rastaIconNote
+                            );
+                        $radTable.show();
+                    } else {
+                        $self.prepend('<div class="rastaNote" />');
+                            $self.find('.rastaNote').prepend(
+                                '<p class="rastaNoteError">No Data</p>'
+                            );
+                        $radTable.show();
+                        $radTableFrame.hide();
+                    }
+
+                  },
+                  error: function(){
+                    console.log('error');
+                  }
+                });
+
+
             });
+
+            $( '<style>.rastaNote { padding: 0px;box-sizing: border-box; color: #fff; background-color:#4E4E4E }.rastaNoteError{ background-color:red;color:#fff;font-weight:bold; }.rastaNote p{padding: 5px;box-sizing:border-box;}</style>' ).appendTo( 'head' );
 
         })(jQuery);
     }
